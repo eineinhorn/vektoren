@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vektor Q3">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>Vektor Q3</title>
+</head>
+<body>
+<header>
+  <div>
+    <span class="eyebrow">MATHE Q3</span>
+    <h1>Vektor Q3</h1>
+  </div>
+  <button id="themeBtn" class="iconBtn" aria-label="Design wechseln">☾</button>
+</header>
+
+<nav class="tabs">
+  <button class="tab active" data-view="home">⌂<span>Start</span></button>
+  <button class="tab" data-view="learn">▣<span>Lernen</span></button>
+  <button class="tab" data-view="practice">✦<span>Üben</span></button>
+  <button class="tab" data-view="explain">◌<span>Erklären</span></button>
+  <button class="tab" data-view="progress">↗<span>Fortschritt</span></button>
+</nav>
+
+<main>
+<section id="home" class="view active">
+  <div class="hero">
+    <div>
+      <span class="pill">Vektorrechnung</span>
+      <h2>Vom Rechnen zum Verstehen.</h2>
+      <p>Trainiere Q3 Schritt für Schritt – mit Visualisierungen, Aufgaben und einem Erklärmodus.</p>
+    </div>
+    <div class="cube">→<br>↗<br>↑</div>
+  </div>
+  <div class="grid two">
+    <button class="card action" data-go="practice"><b>⚡ Schnellübung</b><span>Eine Aufgabe passend zu deinem Niveau</span></button>
+    <button class="card action" data-go="learn"><b>🧠 Lernkarte</b><span>Formel oder Konzept wiederholen</span></button>
+  </div>
+  <div class="card">
+    <div class="row"><b>Dein Lernstand</b><span id="homeScore">0%</span></div>
+    <div class="bar"><i id="homeBar"></i></div>
+    <p class="muted">Löse Aufgaben und markiere Themen als sicher.</p>
+  </div>
+  <div class="card">
+    <b>Q3-Themen</b>
+    <div class="chips">
+      <button class="chip" data-topic="Vektoren">Vektoren</button>
+      <button class="chip" data-topic="Geraden">Geraden</button>
+      <button class="chip" data-topic="Ebenen">Ebenen</button>
+      <button class="chip" data-topic="Lagebeziehungen">Lagebeziehungen</button>
+      <button class="chip" data-topic="Skalarprodukt">Skalarprodukt</button>
+      <button class="chip" data-topic="Abstände">Abstände</button>
+      <button class="chip" data-topic="Winkel">Winkel</button>
+      <button class="chip" data-topic="Geometrie">Analytische Geometrie</button>
+    </div>
+  </div>
+</section>
+
+<section id="learn" class="view">
+  <div class="sectionHead"><div><span class="eyebrow">KOMPENDIUM</span><h2>Lernen</h2></div></div>
+  <div id="topicCards" class="topicList"></div>
+</section>
+
+<section id="practice" class="view">
+  <div class="sectionHead"><div><span class="eyebrow">TRAINING</span><h2>Üben</h2></div><button id="newTask" class="smallBtn">Neue Aufgabe</button></div>
+  <div class="card task">
+    <div class="row"><span class="pill" id="taskTopic">Vektoren</span><span id="taskLevel">Level 1</span></div>
+    <h3 id="question"></h3>
+    <div id="answerArea"></div>
+    <div class="actions"><button id="checkBtn" class="primary">Prüfen</button><button id="hintBtn" class="secondary">💡 Hinweis</button></div>
+    <div id="feedback"></div>
+  </div>
+  <div class="card">
+    <div class="row"><b>Aufgabenmodus</b><select id="difficulty"><option value="1">Grundlagen</option><option value="2">Q3 Standard</option><option value="3">Knifflig</option></select></div>
+    <p class="muted">Die App passt die Aufgaben nicht automatisch an Noten an – du entscheidest selbst, wann du das Niveau erhöhst.</p>
+  </div>
+</section>
+
+<section id="explain" class="view">
+  <div class="sectionHead"><div><span class="eyebrow">LERNEN DURCH ERKLÄREN</span><h2>Erklärstudio</h2></div></div>
+  <div class="card">
+    <label>Thema</label>
+    <select id="exTopic">
+      <option>Skalarprodukt</option><option>Geradengleichung</option><option>Ebenengleichung</option>
+      <option>Lagebeziehung zweier Geraden</option><option>Abstand Punkt–Ebene</option><option>Winkel</option>
+    </select>
+    <label>Deine Erklärung</label>
+    <textarea id="exText" rows="8" placeholder="Erkläre das Thema so, als würdest du es einer Mitschülerin / einem Mitschüler beibringen …"></textarea>
+    <button id="analyzeBtn" class="primary wide">Erklärung prüfen</button>
+    <div id="analysis"></div>
+  </div>
+  <div class="card">
+    <b>🗣️ 60-Sekunden-Challenge</b>
+    <p id="challenge">Erkläre ohne Formeln: Was bedeutet ein Richtungsvektor geometrisch?</p>
+    <button id="newChallenge" class="secondary">Neue Challenge</button>
+  </div>
+</section>
+
+<section id="progress" class="view">
+  <div class="sectionHead"><div><span class="eyebrow">ÜBERSICHT</span><h2>Fortschritt</h2></div></div>
+  <div class="grid two">
+    <div class="stat card"><b id="correct">0</b><span>richtig</span></div>
+    <div class="stat card"><b id="attempts">0</b><span>Versuche</span></div>
+  </div>
+  <div class="card">
+    <b>Themen-Check</b>
+    <div id="topicProgress"></div>
+  </div>
+  <button id="reset" class="danger">Fortschritt zurücksetzen</button>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
